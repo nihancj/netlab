@@ -2,12 +2,15 @@
 
 int costMatrix[20][20], n;
 
-struct routers {
+struct routers
+{
     int distance[20];
     int adjNodes[20];
 } node[20];
 
-void readCostMatrix() {
+// function to read the cost matrix
+void readCostMatrix()
+{
     int i, j;
     printf("\nEnter cost matrix\n");
     for (i = 0; i < n; ++i)
@@ -23,7 +26,8 @@ void readCostMatrix() {
     }
 }
 
-void calcRoutingTable() {
+void calcRoutingTable()
+{
     int i, j, k;
     for (i = 0; i < n; ++i)
     {
@@ -44,7 +48,8 @@ void calcRoutingTable() {
     }
 }
 
-void displayRoutes() {
+void displayRoutes()
+{
     int i, j;
     for (i = 0; i < n; ++i)
     {
@@ -57,7 +62,8 @@ void displayRoutes() {
     }
 }
 
-int main() {
+int main()
+{
     int i, j;
     printf("Number of nodes: ");
     scanf("%d", &n);
