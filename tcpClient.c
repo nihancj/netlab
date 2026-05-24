@@ -1,14 +1,13 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
 int main() {
 	int sockid, nsockid;
 	unsigned int cli_len;
-	char recvline[1024], sendline[1024];
+	char recvline[1024] = {0}, sendline[1024] = {0};
 	struct sockaddr_in ser_adr, cli_adr;
 
 	sockid = socket(AF_INET, SOCK_STREAM, 0);
@@ -17,8 +16,6 @@ int main() {
 		goto stop;
 	}
 	
-	memset(&ser_adr, 0, sizeof(ser_adr));
-	memset(&cli_adr, 0, sizeof(cli_adr));
 	ser_adr.sin_family = AF_INET;
 	ser_adr.sin_port = htons(3000);
 	ser_adr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -28,8 +25,6 @@ int main() {
 		printf("Bind failed\n");
 		goto stop;
 	}
-	memset(recvline, 0, sizeof(recvline));
-	memset(sendline, 0, sizeof(sendline));
 
 	do {
 		printf("Client: ");

@@ -7,7 +7,7 @@
 int main() {
 	int sockid;
 	struct sockaddr_in ser_adr, cli_adr;
-	char recvline[1024], sendline[1024];
+	char recvline[1024] = {0}, sendline[1024] = {0};
 
 	sockid = socket(AF_INET, SOCK_DGRAM, 0);
 
@@ -19,8 +19,6 @@ int main() {
 	if (b < 0) {
 		printf("Bind failed\n");
 	}
-	memset(sendline, 0, sizeof(sendline));
-	memset(recvline, 0, sizeof(recvline));
 
 	unsigned int cli_len = sizeof(cli_adr);
 	do {
