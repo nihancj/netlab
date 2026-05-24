@@ -5,8 +5,7 @@
 #include <unistd.h>
 
 int main() {
-	int sockid, nsockid;
-	unsigned int cli_len;
+	int sockid;
 	char recvline[1024] = {0}, sendline[1024] = {0};
 	struct sockaddr_in ser_adr, cli_adr;
 
@@ -22,7 +21,7 @@ int main() {
 	
 	int b = connect(sockid, (struct sockaddr *)&ser_adr, sizeof(ser_adr));
 	if(b < 0) {
-		printf("Bind failed\n");
+		printf("Bind failed");
 		goto stop;
 	}
 
@@ -37,7 +36,6 @@ int main() {
 	}while (strncmp(sendline, "exit", 4) || strncmp(recvline, "exit", 4));
 
 stop:
-	close(nsockid);
 	close(sockid);
 	return 0;
 }

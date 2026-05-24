@@ -5,8 +5,7 @@
 #include <unistd.h>
 
 int main() {
-	int sockid, nsockid;
-	unsigned int cli_len;
+	int sockid, nsockid; unsigned int cli_len;
 	char recvline[1024] = {0}, sendline[1024] = {0};
 	struct sockaddr_in ser_adr, cli_adr;
 
@@ -27,7 +26,6 @@ int main() {
 	}
 
 	listen(sockid, 0);
-	cli_len = sizeof(cli_adr);
 
 	nsockid = accept(sockid, (struct sockaddr *)&cli_adr, &cli_len);
 	printf("Client connected\n");
